@@ -14,12 +14,12 @@ def salvesta_failisse(f,text):
     return aeg
 
 def new_sen():
-       ru_word=input("Введи слово на русском")
-       en_word=input("Enter sentence on english")
-       salvesta_failisse("ru.txt",ru_word)
-       salvesta_failisse("en.txt",en_word)
-       print(ru_list)
-       print(en_list)
+    ru_word=input("Введи слово на русском")
+    en_word=input("Enter sentence on english")
+    salvesta_failisse("ru.txt",ru_word)
+    salvesta_failisse("en.txt",en_word)
+    print(ru_list)
+    print(en_list)
 
 def tõlkimine(ru_list,en_list):
     slovo=input("Введи слово")
@@ -29,6 +29,24 @@ def tõlkimine(ru_list,en_list):
     elif slovo in en_list:
         ind2=en_list.index(slovo)
         print(f"{slovo}-{en_list[ind]}")
+
+def parandus():
+    viga=input("Какое слово хотите исправить?")
+    if viga in ru_list:
+        ind=ru_list.index(viga)
+        print(f"Будет исправлена пара слов{viga}-{en_list[ind]}")
+        ru_list.pop(ind)
+        en_list.pop(ind)
+        new_sen()
+    elif viga in en_list:
+        ind=en_list
+        print(f"Будет исправлена пара слов{viga}-{rus_list[ind]}")
+        ru_list.pop(ind)
+        en_list.pop(ind)
+        new_sen()
+    else:
+        print(f"{viga.upper()} отсутствует в словаре")
+        return ru_list,en_list
 
 ru_list=loe_failist("ru.txt")
 en_list=loe_failist("en.txt")
@@ -40,6 +58,9 @@ while True:
     if v=="1":
         tõlkimine(ru_list,en_list)
     elif v=="2":
-        ru_list, en_list = new_sen()
+        ru_list,en_list=new_sen()
     elif v=="3":
-        pass
+        print(ru_list,en_list)
+        ru_list,en_list=parandus
+        (ru_list,en_list)
+        print(ru_list,en_list)
