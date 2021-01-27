@@ -56,7 +56,7 @@ print(en_list)
 while True:
     v=input("Перевод-1, Новое слово-2, Исправить ошибку-3, Проверка знаний-4")
     if v=="1":
-        tõlkimine(ru_list,en_list)
+        tõlkimine(ru_list,en_list)1
     elif v=="2":
         ru_list,en_list=new_sen()
     elif v=="3":
